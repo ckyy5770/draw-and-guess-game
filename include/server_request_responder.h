@@ -90,16 +90,11 @@ private:
     }
 
 
-    /**
-     * action functions
-     *
-     *
-     *
-     */
+    /********************action functions*****************/
 
 
     /**
-     *
+     * create a new game room
      * @param body
      * @param client_id
      * @param group_id

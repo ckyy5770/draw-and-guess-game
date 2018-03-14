@@ -54,3 +54,22 @@ This part should be counterpart of the server side networking code, I will just 
 * the client should have a request sender which binds to the server request responder port. Clients will send all their requests to that port and receive the response from server. The server is required to send back a response for each client request. **We use ZMQ REQ-REP sockets to implement this sender.**
 
 * the client should have a subscriber which subscribe to specific game, and keep receiving all updated information related to that game. **We use ZMQ PUB-SUB sockets to implement our client subscriber.**
+
+### message format
+
+* any messages in this application should follow the same message format when communication
+
+* in general, a message should has following information:
+    
+    * message origin: CLI or SER
+    
+    * request or response type: e.g. NEW_GAME_ROOM
+    
+    * message body that is specific for its type.
+        
+    * related client id.
+        
+    * related client group id.
+   
+* the message should be partitioned by '|', and provided information should strict follows the order listed above
+    

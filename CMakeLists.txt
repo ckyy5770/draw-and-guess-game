@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(./lib/ZMQ)
 
-add_executable(server ./include/util.h ./include/server_publisher.h ./src/server/server_publisher.cpp)
+add_executable(server ./include/util.h ./include/server_publisher.h ./src/server/server_publisher.cpp include/server_request_responder.h)

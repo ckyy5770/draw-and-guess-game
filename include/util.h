@@ -8,7 +8,7 @@
 #include <iostream>
 
 void logger(std::string msg){
-    std::cout << msg;
+    std::cout << msg << std::endl;
 }
 
 #endif //DRAW_AND_GUESS_GAME_UTIL_H

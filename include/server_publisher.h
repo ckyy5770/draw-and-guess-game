@@ -20,7 +20,7 @@ public:
      * ctor
      * @param port
      */
-    server_publisher(std::string port) :
+    server_publisher(const std::string & port) :
             zmq_context{0},
             zmq_socket_pub{zmq_context, ZMQ_PUB},
             port{port}

@@ -14,7 +14,11 @@
 
 class server_request_responder{
 public:
-    server_request_responder(std::string port) :
+    /**
+     * ctor
+     * @param port
+     */
+    server_request_responder(const std::string & port) :
             zmq_context{0},
             zmq_socket_rep{zmq_context, ZMQ_REP},
             port(port)

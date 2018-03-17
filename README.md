@@ -57,7 +57,9 @@ This part should be counterpart of the server side networking code, I will just 
 
 ### message format
 
-* any messages in this application should follow the same message format when communication
+#### overview
+
+* any messages in this application should follow the same message format when communication with each other
 
 * in general, a message should has following information:
     
@@ -72,4 +74,12 @@ This part should be counterpart of the server side networking code, I will just 
     * related client group id.
    
 * the message should be partitioned by '|', and provided information should strict follows the order listed above
-    
+
+#### detailed message list
+
+##### NEW_DRAWN_PIXEL
+
+* CLI to SER : `CLI|NEW_DRAWN_PIXEL|[x-axis]&[y-axis]|[CLIENT_ID]|[CLIENT_GROUP_ID]`
+
+* SER to CLI : topic - `[CLIENT_GROUP_ID]` content - `CLI|NEW_DRAWN_PIXEL|[x-axis]&[y-axis]|[CLIENT_ID]|[CLIENT_GROUP_ID]`
+

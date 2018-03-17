@@ -90,7 +90,7 @@ private:
      * publish the new drawing pixel via server publisher
      *
      */
-    void publish_new_drawing(std::string msg){
+    void publish_new_drawing(const std::string & msg){
         // extract client group id - parts[4]
         std::vector<std::string> parts;
         boost::split(parts, msg, [](char c){return c=='|';});

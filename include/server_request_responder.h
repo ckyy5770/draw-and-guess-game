@@ -63,7 +63,7 @@ private:
     std::string port;
 
     // a map that contains all the respond logic for different requests
-    std::unordered_map<std::string, std::string (*)(std::string, std::string, std::string)> action_map;
+    std::unordered_map<std::string, std::string (*)(const std::string &, const std::string &, const std::string &)> action_map;
 
 
     /**
@@ -71,7 +71,7 @@ private:
      * @param request
      * @return the result string that should be sent back to client
      */
-    std::string process_request(std::string request){
+    std::string process_request(const std::string & request){
         std::vector<std::string> parts;
         boost::split(parts, request, [](char c){return c=='|';});
         // retrieve request type, message body, related client id and group id
@@ -104,7 +104,7 @@ private:
      * @param group_id
      * @return
      */
-    std::string action_new_game_room(std::string body, std::string client_id, std::string group_id){
+    std::string action_new_game_room(const std::string & body, const std::string & client_id, const std::string & group_id){
 
     }
 

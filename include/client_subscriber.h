@@ -8,6 +8,7 @@
 #include "zhelper.hpp"
 #include <boost/algorithm/string.hpp>
 #include <unordered_map>
+#include "util.h"
 
 class client_subscriber{
 public:
@@ -24,7 +25,8 @@ public:
     {};
 
     /**
-     * connect to server publisher socket
+     * connect to server publisher socket, start to receive messages,
+     * this function should run in an independent thread
      */
     void start(){
         zmq_socket_sub.connect("tcp://" + ip + ":" + port);
@@ -32,6 +34,18 @@ public:
         // and they can also subscribe topic [THEIR_GROUP_ID]
         zmq_socket_sub.setsockopt(ZMQ_SUBSCRIBE, "SYSTEM");
         zmq_socket_sub.setsockopt(ZMQ_SUBSCRIBE, group_id);
+
+        //receive one message and take an action for it
+        while(true){
+            // source address, we don't need it so just discard it
+            std::string address = s_recv(zmq_socket_sub);
+            // message content
+            std::string contents = s_recv(zmq_socket_sub);
+            logger("received a message from server: " + contents);
+
+            // process this server request
+            process_request(contents);
+        }
     }
 
     /**
@@ -43,20 +57,6 @@ public:
         group_id = new_group_id;
         zmq_socket_sub.setsockopt(ZMQ_SUBSCRIBE, group_id);
     }
-
-    /**
-     * receive one message and take an action for it
-     */
-    void receive(){
-        // source address, we don't need it so just discard it
-        std::string address = s_recv(zmq_socket_sub);
-        // message content
-        std::string contents = s_recv(zmq_socket_sub);
-        // process this server request
-        process_request(contents);
-    }
-
-
 
 private:
     // server ip

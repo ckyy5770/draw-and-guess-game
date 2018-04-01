@@ -19,7 +19,7 @@ public:
 
     game_state(std::string game_room_name):
             group_name(game_room_name)
-    {}
+    {};
 private:
     /**
      * this struct contains information of one player
@@ -63,10 +63,17 @@ private:
     // a list of players in this room
     std::list<game_player> player_list;
 
-    /** Game lobby does not need states below**/
+    /** Game lobby does not need states below **/
 
     // is the game on going?
     bool is_game_end = true;
+
+    int drawer_id = -1;
+
+    /** Other Game rooms does not need states below **/
+
+    // game room list
+    std::list<game_state> room_list;
 
 
 };

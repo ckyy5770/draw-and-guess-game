@@ -1,0 +1,4 @@
+/home/chuilian/Dropbox/personal_projects/draw-and-guess-game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/chuilian/Dropbox/personal_projects/draw-and-guess-game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/chuilian/Dropbox/personal_projects/draw-and-guess-game/cmake-build-debug/CMakeFiles/client.dir
+/home/chuilian/Dropbox/personal_projects/draw-and-guess-game/cmake-build-debug/CMakeFiles/server.dir

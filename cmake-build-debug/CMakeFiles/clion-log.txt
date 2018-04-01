@@ -1,4 +1,0 @@
-/home/chuilian/Documents/clion-2017.3.4/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/chuilian/Dropbox/personal_projects/draw-and-guess-game
--- Configuring done
--- Generating done
--- Build files have been written to: /home/chuilian/Dropbox/personal_projects/draw-and-guess-game/cmake-build-debug

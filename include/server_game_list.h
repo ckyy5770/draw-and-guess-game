@@ -16,14 +16,15 @@ public:
     {};
 
     int create_new_game(std::string name){
-        // create room
-        server_game_room new_game(name);
 
         // allocate id
         int id = next_id++;
 
-        // move the instance to map
-        game_list[id] = new_game;
+        // create the instance in map
+        game_list[id] = server_game_room(name);
+
+        // reset id
+        game_list[id].group_id = id;
 
         return id;
     }

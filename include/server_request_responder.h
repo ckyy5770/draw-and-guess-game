@@ -63,7 +63,7 @@ private:
     std::string port;
 
     // a map that contains all the respond logic for different requests
-    std::unordered_map<std::string, std::string (*)(const std::string &, const std::string &, const std::string &)> action_map;
+    std::unordered_map<std::string, std::string (server_request_responder::*)(const std::string &, const std::string &, const std::string &)> action_map;
 
 
     /**
@@ -81,7 +81,7 @@ private:
         std::string group_id = parts[4];
         // get action function according to request type
         auto action = action_map[request_type];
-        return action(body, client_id, group_id);
+        return (this->*action)(body, client_id, group_id);
     }
 
 
@@ -90,7 +90,7 @@ private:
      * This function should run when starting the responder
      */
     void init_action_map(){
-        action_map["NEW_GAME_ROOM"] = &action_new_game_room;
+        action_map["NEW_GAME_ROOM"] = &server_request_responder::action_new_game_room;
     }
 
 

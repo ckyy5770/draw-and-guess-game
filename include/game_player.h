@@ -37,8 +37,10 @@ struct game_player{
         memcpy(player_name, name.c_str(), name.size());
     }
 
-    bool operator==(const game_player& lhs, const game_player& rhs){
-        return lhs.palyer_id == rhs.palyer_id;
+    game_player(){};
+
+    bool operator==(const game_player& other){
+        return palyer_id == other.palyer_id;
     }
 };
 #endif //DRAW_AND_GUESS_GAME_PLAYER_T_H

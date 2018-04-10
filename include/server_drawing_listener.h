@@ -24,7 +24,7 @@ public:
      * ctor
      * @param port
      */
-    server_drawing_listener(const std::string & port, const server_publisher & publisher) :
+    server_drawing_listener(const std::string & port, server_publisher & publisher) :
             port{port},
             publisher{publisher}
     {}
@@ -84,7 +84,7 @@ private:
     size_t BUFSIZE = 2048;
 
     // ref to a server publisher, being used to publish new drawing to all players in a game
-    const server_publisher & publisher;
+    server_publisher & publisher;
 
     /**
      * publish the new drawing pixel via server publisher

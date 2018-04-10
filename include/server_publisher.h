@@ -48,7 +48,7 @@ public:
      * @param topic
      * @param msg
      */
-    void publish(const std::string & topic, const std::string & msg) const {
+    void publish(const std::string & topic, const std::string & msg){
         s_sendmore(zmq_socket_pub, topic);
         s_send(zmq_socket_pub, msg);
 

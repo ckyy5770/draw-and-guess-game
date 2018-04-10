@@ -27,10 +27,10 @@ public:
         publisher.start();
 
         // start request responder in a thread
-        t_responder = std::thread(request_responder.start());
+        t_responder = std::thread(&server_request_responder::start, &request_responder);
 
         // start drawing listener in a thread
-        t_drawing_listener = std::thread(drawing_listener.start());
+        t_drawing_listener = std::thread(&server_drawing_listener::start, &drawing_listener);
     }
 
 

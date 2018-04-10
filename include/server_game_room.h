@@ -36,5 +36,7 @@ struct server_game_room{
             group_name(game_room_name)
     {};
 
+    server_game_room(){}
+
 };
 #endif //DRAW_AND_GUESS_GAME_SERVER_GAME_STATE_H

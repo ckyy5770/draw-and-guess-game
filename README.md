@@ -109,6 +109,14 @@ This part should be counterpart of the server side networking code, I will just 
 
 * SRV to CLI: `SRV|REPLY_CHANGE_READY_STATE|[[DECLINED]&[CURRENT_READY_STATE]|[CLIENT_ID]|[GROUP_ID]`
 
+##### CREATE_GAME
+
+* CLI to SRV: `CLI|REQUEST_CREATE_GAME|[NEW_GAME_NAME]]|[CLIENT_ID]|0`
+
+* SRV to CLI: `SRV|REPLY_CREATE_GAME|[ACCEPTED]&[NEW_GAME_ID]|[CLIENT_ID]|0`
+
+* SRV to CLI: `SRV|REPLY_CREATE_GAME|[DECLINED]&[REASON]|[CLIENT_ID]|0`
+
 #####
 
 ### major procedures
@@ -164,3 +172,13 @@ This part should be counterpart of the server side networking code, I will just 
 #### leave a game room
 
 * client will send a REQUEST_JOIN_GAME with room id 0 (game lobby)
+
+#### create a game
+
+* client send a REQUEST_CREATE_GAME with game name to the server
+
+* server received the request and decide whether the game should be created, if the request is accepted, the server should create the game and return the new game info to the client
+
+### data schema
+
+we use [flatbuffers](https://github.com/google/flatbuffers/tree/master/include/flatbuffers) to do serialization and deserialization of our major game data, here are data schemas we use:

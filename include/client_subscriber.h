@@ -78,7 +78,7 @@ private:
     std::string group_id = "DEFAULT";
 
     // a map that contains all the respond logic for different requests
-    std::unordered_map<std::string, void (*)(const std::string &, const std::string &, const std::string &)> action_map;
+    std::unordered_map<std::string, void (client_subscriber::*)(const std::string &, const std::string &, const std::string &)> action_map;
 
     /**
      * process one server request
@@ -94,7 +94,7 @@ private:
         std::string group_id = parts[4];
         // get action function according to request type
         auto action = action_map[request_type];
-        action(body, client_id, group_id);
+        (this->*action)(body, client_id, group_id);
     }
 
     /**
@@ -102,7 +102,7 @@ private:
      * This function should run when starting the responder
      */
     void init_action_map(){
-        action_map["NEW_PLAYER"] = &action_new_player;
+        action_map["NEW_PLAYER"] = &client_subscriber::action_new_player;
     }
 
 

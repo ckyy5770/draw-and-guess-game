@@ -27,7 +27,7 @@ public:
         // set subscribe group to 0 -> lobby
         subscriber.reset_group("0");
         // start subscriber in a thread
-        t_subscriber = std::thread(subscriber.start());
+        t_subscriber = std::thread(&client_subscriber::start, &subscriber);
     }
 
 

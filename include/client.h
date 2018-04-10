@@ -14,9 +14,9 @@
 
 class client{
 public:
-    client(const std::string & ip, const std::string & request_sender_port, const std::string & drawing_sender_port, const std::string & server_pub_port):
-            request_sender{ip, request_sender_port},
-            drawing_sender{ip, drawing_sender_port},
+    client(const std::string & ip, const std::string & server_responder_port, const std::string & server_drawing_linstener_port, const std::string & server_pub_port):
+            request_sender{ip, server_responder_port},
+            drawing_sender{ip, server_drawing_linstener_port},
             subscriber{ip, server_pub_port}
     {}
 
